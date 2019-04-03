@@ -57,31 +57,33 @@
                             <strong>Type</strong>
                         </div>
                     </div>
-                    @foreach($client->phones as $phone)
-                        <input type="hidden" name="id_phone[]" value="{{$phone['id']}}">
-                        <div class="row" id="phone-form">
-                            <div class="col-md-2">
-                                <input type="text" name="ddd[]" class="form-control" placeholder="ddd"
-                                       value="{{$phone['ddd']}}">
+                    <div class="col-md-12" id="phones">
+                        @foreach($client->phones as $phone)
+                            <input type="hidden" id="id_phone[]" name="id_phone[]" value="{{$phone['id']}}">
+                            <div class="row col-md-12" id="phone-form">
+                                <div class="col-md-2">
+                                    <input type="text" name="ddd[]" class="form-control" placeholder="ddd"
+                                           value="{{$phone['ddd']}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" name="number[]" class="form-control" placeholder="number"
+                                           value="{{$phone['number']}}">
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="type[]" class="form-control">
+                                        <option value="{{$phone['type']}}">{{$phone['type']}}</option>
+                                        <option value="Home">Home</option>
+                                        <option value="Work">Work</option>
+                                        <option value="Mobile">Mobile</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type='button' onclick='$(this).parent().parent().remove();' id='btnDelete'
+                                            class="btn btn-sm btn-light"><i class="far fa-trash-alt"></i></button>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <input type="text" name="number[]" class="form-control" placeholder="number"
-                                       value="{{$phone['number']}}">
-                            </div>
-                            <div class="col-md-3">
-                                <select name="type[]" class="form-control">
-                                    <option value="{{$phone['type']}}">{{$phone['type']}}</option>
-                                    <option value="Home">Home</option>
-                                    <option value="Work">Work</option>
-                                    <option value="Mobile">Mobile</option>
-                                </select>
-                            </div>
-                            <div class="col-md-1">
-                                <button type='button' onclick='$(this).parent().parent().remove();' id='btnDelete'
-                                        class="btn btn-sm btn-light"><i class="far fa-trash-alt"></i></button>
-                            </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                     <div class="row">
                         <div class="col-md-12" align="center">
                             <br>
@@ -102,18 +104,8 @@
 
     <script>
         $(document).ready(function () {
-
-            $("#btnDeletePhone").on("click", (function () {
-                if (1 > 0) {
-                    $(this).parent().parent().remove();
-                } else {
-                    alert('Não é possível deletar o último telefone registrado.');
-                }
-            }));
-
             $("#add-row").click(function () {
-                $("#phone-form").append("<div class='col-md-12'>" +
-                    "<div class='row' id=''>" +
+                $("#phones").append("<div class='row col-md-12'>" +
                     "<div class='col-md-2'>" +
                     "<input class='form-control' type='text' name='ddd[]'placeholder='Ex.: 51'>" +
                     "</div>" +
@@ -130,7 +122,6 @@
                     "<div class='col-md-1'>" +
                     "<button type='button' onclick='$(this).parent().parent().remove();' id='btnDelete' class=\"btn btn-sm btn-light\"><i class=\"far fa-trash-alt\"></i></button>" +
                     "</button>" +
-                    " </div>" +
                     " </div>" +
                     " </div>");
             });

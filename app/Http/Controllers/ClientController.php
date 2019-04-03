@@ -114,9 +114,10 @@ class ClientController extends Controller
         $client->address = $request->get('address');
 
         $phones = [];
+        $client_id = $id;
+
         for($i = 0; $i < count($request->ddd); $i++){
             $phone = null;
-
             if (isset($request->id_phone[$i])) {
                 $phone = Phone::find($request->id_phone[$i]);
             } else {
@@ -127,15 +128,10 @@ class ClientController extends Controller
             $phone->number = $request->number[$i];
             $phone->type = $request->type[$i];
 
-            /*$phones[$i] = [
-                'ddd'        => $request->ddd[$i],
-                'number'     => $request->number[$i],
-                'type'       => $request->type[$i],
-                'id'         => $request->id_phone[$i],
-            ];*/
             array_push($phones, $phone);
         }
-        //dd($phones);
+
+
 
         $client->phones()->saveMany($phones);
         $client->save();
