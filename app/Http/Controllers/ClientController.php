@@ -53,11 +53,11 @@ class ClientController extends Controller
         $client = Client::create($request->only('name', 'cpf', 'birthDate', 'address'));
         $phones = [];
 
-        for($i = 0; $i < count($request->ddd); $i++){
+        for ($i = 0; $i < count($request->ddd); $i++) {
             $phones[$i] = [
-                'ddd'       => $request->ddd[$i],
-                'number'       => $request->number[$i],
-                'type'       => $request->type[$i]
+                'ddd' => $request->ddd[$i],
+                'number' => $request->number[$i],
+                'type' => $request->type[$i]
             ];
             // array_push($phones, [$request->ddd[$i], $request->number[$i], $request->type[$i]]);
         }
@@ -114,9 +114,7 @@ class ClientController extends Controller
         $client->address = $request->get('address');
 
         $phones = [];
-        $client_id = $id;
-
-        for($i = 0; $i < count($request->ddd); $i++){
+        for ($i = 0; $i < count($request->ddd); $i++) {
             $phone = null;
             if (isset($request->id_phone[$i])) {
                 $phone = Phone::find($request->id_phone[$i]);
@@ -131,9 +129,24 @@ class ClientController extends Controller
             array_push($phones, $phone);
         }
 
+        $old_phones = DB::select('select * from phones where client_id = ?', [$id]);
+        if (count($phones) < count($old_phones)) {
+            DB::delete('delete from phones where client_id = ?', [$id]);
+
+            $phones = [];
+            for ($i = 0; $i < count($request->ddd); $i++) {
+                $phones[$i] = [
+                    'ddd' => $request->ddd[$i],
+                    'number' => $request->number[$i],
+                    'type' => $request->type[$i]
+                ];
+            }
+            $client->phones()->createMany($phones);
+        } else {
+            $client->phones()->saveMany($phones);
+        }
 
 
-        $client->phones()->saveMany($phones);
         $client->save();
 
         return redirect()->route('client.index')
