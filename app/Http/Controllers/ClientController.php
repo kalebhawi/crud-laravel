@@ -101,6 +101,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //funcionando!!!
         $request->validate([
             'name' => 'required',
             'cpf' => 'required',
