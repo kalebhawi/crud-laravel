@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="480acd90-8096-4dcb-a619-8153ed302fd8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,8 +19,8 @@
       <file leaf-file-name="ClientController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ClientController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="131" column="84" lean-forward="true" selection-start-line="131" selection-start-column="84" selection-end-line="131" selection-end-column="84" />
+            <state relative-caret-position="714">
+              <caret line="145" column="49" selection-start-line="145" selection-start-column="49" selection-end-line="145" selection-end-column="49" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
               </folding>
@@ -337,7 +336,7 @@
       <workItem from="1553861544056" duration="89000" />
       <workItem from="1554208048802" duration="14951000" />
       <workItem from="1554293970994" duration="4649000" />
-      <workItem from="1554310353038" duration="1680000" />
+      <workItem from="1554310353038" duration="1816000" />
     </task>
     <task id="LOCAL-00001" summary="added more phones in create">
       <created>1553708483030</created>
@@ -367,11 +366,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554298817479</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="edit, create and delete in client edit mode are correctly">
+      <created>1554312180590</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1554312180590</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95489000" />
+    <option name="totallyTimeSpent" value="95625000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -458,7 +464,8 @@
     <MESSAGE value="client and phone saves correctly" />
     <MESSAGE value="phones are editable&#10;add and remove from edit with bug" />
     <MESSAGE value="iuofaduoifdahciadji" />
-    <option name="LAST_COMMIT_MESSAGE" value="iuofaduoifdahciadji" />
+    <MESSAGE value="edit, create and delete in client edit mode are correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit, create and delete in client edit mode are correctly" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ClientController.php">
@@ -666,8 +673,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ClientController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="131" column="84" lean-forward="true" selection-start-line="131" selection-start-column="84" selection-end-line="131" selection-end-column="84" />
+        <state relative-caret-position="714">
+          <caret line="145" column="49" selection-start-line="145" selection-start-column="49" selection-end-line="145" selection-end-column="49" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>
