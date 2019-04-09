@@ -13,9 +13,10 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->truncate();
+        $this->createUser();
     }
 
-    private function createClients()
+    private function createUser()
     {
         User::create([
             'name' => 'Kaleb Hawi',
