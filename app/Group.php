@@ -8,7 +8,7 @@ class Group extends Model
 {
     protected $fillable = ['name', 'client_quantity','description', 'admin'];
 
-    public function clients(){
+    public function client(){
         return $this->hasMany('App\Client');
     }
 }

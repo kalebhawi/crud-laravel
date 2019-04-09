@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Group;
 
 class GroupsTableSeeder extends Seeder
 {
@@ -17,7 +18,7 @@ class GroupsTableSeeder extends Seeder
     }
 
     private function createGroups(){
-        Groups::create([
+        Group::create([
             'name' => 'Admins Group',
             'description' => 'Only users admin can into this group',
             'client_quantity' => 1,

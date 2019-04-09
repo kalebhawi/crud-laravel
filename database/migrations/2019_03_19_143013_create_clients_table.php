@@ -19,11 +19,13 @@ class CreateClientsTable extends Migration
             $table->string('address');
             $table->date('birthDate');
             $table->string('cpf');
-            $table->unsignedBigInteger('group_id')->nullable();
-            $table->foreign('group_id')
-                ->references('id')->on('groups')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+
+            $table->unsignedInteger('group_id')
+            ->references('id')
+            ->on('clients')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -35,6 +37,6 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients_tables');
+        Schema::dropIfExists('clients');
     }
 }
