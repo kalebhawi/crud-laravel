@@ -78,5 +78,8 @@
             @endforeach
         </table>
         {!! $clients->links() !!}
+        <div class="col-md-12" align="center">
+            <a class="btn btn-sm btn-success" href="http://localhost:8000/group">Show groups</a>
+        </div>
     </div>
 @endsection

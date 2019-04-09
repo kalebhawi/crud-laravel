@@ -19,6 +19,11 @@ class CreateClientsTable extends Migration
             $table->string('address');
             $table->date('birthDate');
             $table->string('cpf');
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->foreign('group_id')
+                ->references('id')->on('groups')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -18,4 +18,8 @@ class Client extends Model
         return $this->hasMany('App\Phone');
     }
 
+    public function group(){
+        return $this->belongsTo('App\Group');
+    }
+
 }
