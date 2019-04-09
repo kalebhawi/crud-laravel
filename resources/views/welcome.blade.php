@@ -86,6 +86,7 @@
 
                 <div class="links">
                     <a href="/client">Clients</a>
+                    <a href="/group">Groups</a>
                     <a href="/about">About us</a>
                 </div>
             </div>

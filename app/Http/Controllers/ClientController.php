@@ -151,47 +151,8 @@ class ClientController extends Controller
         } else {
             $client->phones()->saveMany($phones);
         }
-
-
         $client->save();
-
         return redirect()->route('client.index')
             ->with('success', 'Client updated successfully');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $client = Client::with('phones')->find($id);
-        $client->delete();
-        return redirect()->route('client.index')
-            ->with('success', 'Client deleted successfully.');
-    }
-
-    public function phoneDestroy($id_phone)
-    {
-        $phone = Phone::find($id_phone);
-        dd($phone->toArray());
-        $phone->delete();
-        return view('client.detail', compact('client'))
-            ->with('success', 'Phone deleted successfully.');
-    }
-    /*public function search(){
-        $q = Input::post('nameSearch');
-        $clients = Client::where('name', 'LIKE','%'.$q.'%')->get();
-
-        if(!is_null($q)){
-            return view('search', compact('clients'))
-                ->with('i', (request()->input('page', 1) -1)*5);
-        } else{
-            return redirect()->route('client.index')
-                ->with('error', 'No found results');
-        }
-    }*/
-
 }

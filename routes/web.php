@@ -9,9 +9,6 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 });
-Route::get('/group', function () {
-    return view('group.index');
-});
 
 Route::get('/about', function () {
     return view('about');
@@ -20,3 +17,5 @@ Route::get('/about', function () {
 Auth::routes();
 
 route::resource('client', 'ClientController');
+
+route::resource('group', 'GroupController');

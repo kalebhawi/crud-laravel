@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h3>List Client</h3>
+                <h3>Client list</h3>
             </div>
 
             <div class="col-md-4">
@@ -49,6 +49,7 @@
                 <th width="50px"><b>No.</b></th>
                 <th width="300px"><b>Name</b></th>
                 <th>Date of birth</th>
+                <th>Group</th>
                 <th width="180px"><b>Action</b></th>
             </tr>
 
@@ -65,6 +66,7 @@
                     <td><b>{{++$i}}</b></td>
                     <td>{{$client->name}}</td>
                     <td>{{$client->birthDate}}</td>
+                    <td>{{$client->group_id}}</td>
                     <td>
                         <form action="{{route('client.destroy', $client->id)}}" method="post">
                             <a class="btn btn-sm btn-light" href="{{route('client.show', $client->id)}}"><i class="far fa-eye"></i></a>
@@ -79,7 +81,7 @@
         </table>
         {!! $clients->links() !!}
         <div class="col-md-12" align="center">
-            <a class="btn btn-sm btn-success" href="http://localhost:8000/group">Show groups</a>
+            <a class="btn btn-sm btn-success" href="{{route('group.index')}}">Show groups</a>
         </div>
     </div>
 @endsection
