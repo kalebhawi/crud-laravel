@@ -30,7 +30,6 @@
                     <strong>Address : </strong> {{$client->address}}
                 </div>
 
-
                 <div class="col-md-12">
                     <div class="form-group">
                         <strong>Phones : </strong><br>
@@ -40,13 +39,9 @@
                         @endforeach
                     </div>
                 </div>
-            <div class="col-md-12">
-                <a href="{{route('client.index')}}" class="btn btn-sm btn-success">Back</a>
+                <div class="col-md-12">
+                    <a href="{{route('client.index')}}" class="btn btn-sm btn-success">Back</a>
+                </div>
             </div>
         </div>
-
-
-
-    </div>
-
-    @endsection
+@endsection

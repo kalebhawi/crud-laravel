@@ -19,9 +19,8 @@
                     </div>
                 </form>
             </div>
-
-            <div class="col-md-4">
-                <a class="btn btn-sm btn-success" href="#">Create group</a>
+            <div class="col-sm-4">
+                <a href="{{route('group.create')}}" class="btn btn-sm btn-success">Register new group</a>
             </div>
         </div>
         <div class="col-md-8">
@@ -31,7 +30,8 @@
                         <th width="200px"><b>Name</b></th>
                         <th><b>Description</b></th>
                         <th width="150px"><b>Client quantity</b></th>
-                        <th width="200px"><b>Admin</b></th>
+                        <th width="100px"><b>Admin</b></th>
+                        <th width="150px"><b>Actions</b></th>
                     </tr>
                     @foreach($groups as $group)
 
@@ -40,6 +40,15 @@
                             <td>{{$group->description}}</td>
                             <td>{{$group->client_quantity}}</td>
                             <td>{{$group->admin}}</td>
+                            <td>
+                                <form action="{{route('client.destroy', $group->id)}}" method="post">
+                                    <a class="btn btn-sm btn-light" href="{{route('group.show', $group->id)}}"><i class="far fa-eye"></i></a>
+                                    <a class="btn btn-sm btn-light" href="{{route('group.edit', $group->id)}}"><i class="far fa-edit"></i></a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-light"><i class="far fa-trash-alt"></i></button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </div>

@@ -18,7 +18,9 @@ class CreateGroupsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('client_quantity');
-            $table->integer('admin');
+            $table->unsignedBigInteger('admin')->nullable();
+            $table->foreign('admin')
+                ->references('id')->on('clients');
             $table->timestamps();
         });
     }
