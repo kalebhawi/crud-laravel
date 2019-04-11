@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Client;
 use App\Phone;
+use App\Group;
 use DB;
 
 class ClientController extends Controller
@@ -21,7 +22,8 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        $clients = Client::latest()->name($request->name)->paginate(10);
+        $clients = Client::with('group')->name($request->name)->paginate(10);
+        //dd($clients);
         return view('client.index', compact('clients'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
@@ -33,7 +35,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('client.create');
+        $groups = Group::orderBy('name')->get();
+        return view('client.create', compact('groups'));
     }
 
     /**
@@ -50,12 +53,13 @@ class ClientController extends Controller
             'cpf' => 'required',
             'birthDate' => 'required',
             'address' => 'required',
+            'group_id' => 'required',
             'ddd' => 'required',
             'number' => 'required',
             'type' => 'required',
         ]);
         //dd($request->name, $request->cpf, $request->birthDate, $request->address,$request->ddd, $request->type, $request->number);
-        $client = Client::create($request->only('name', 'cpf', 'birthDate', 'address'));
+        $client = Client::create($request->only('name', 'cpf', 'birthDate', 'address', 'group_id'));
         $phones = [];
 
         for ($i = 0; $i < count($request->ddd); $i++) {

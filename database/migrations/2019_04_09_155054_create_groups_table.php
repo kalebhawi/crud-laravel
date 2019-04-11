@@ -20,7 +20,8 @@ class CreateGroupsTable extends Migration
             $table->integer('client_quantity');
             $table->unsignedBigInteger('admin')->nullable();
             $table->foreign('admin')
-                ->references('id')->on('clients');
+                ->references('id')
+                ->on('clients');
             $table->timestamps();
         });
     }

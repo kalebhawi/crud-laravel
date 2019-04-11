@@ -74,6 +74,15 @@
                     </div>
                 </div>
 
+                <div class="col-md-4">
+                    <strong>Group</strong>
+                    <select class="form-control form-control-md" name="group_id" id="group_id">
+                        @foreach($groups as $group)
+                            <option value="{{$group->id}}">{{$group->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="col-md-12" align="center">
                     <br>
                     <a href="{{route('client.index')}}" class="btn btn-sm btn-success">Back</a>

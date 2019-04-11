@@ -14,6 +14,11 @@ class Group extends Model
         }
     }
 
+    public function scopeAdmin($query, $id){
+        $admin_group = Group::find($id);
+        return Client::where('id', $admin_group->admin)->first();
+    }
+
     public function client(){
         return $this->hasMany('App\Client');
     }

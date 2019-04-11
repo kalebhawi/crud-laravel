@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    protected $fillable = ['name', 'cpf','birthDate', 'address'];
+    protected $fillable = ['name', 'cpf','birthDate', 'address', 'group_id'];
 
     public function scopeName($query, $name){
         if(!empty($name)){

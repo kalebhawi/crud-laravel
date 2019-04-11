@@ -22,7 +22,7 @@ class CreateClientsTable extends Migration
 
             $table->unsignedInteger('group_id')
             ->references('id')
-            ->on('clients')
+            ->on('groups')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 

@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'CRUD') }}</title>
 
     <!-- Scripts -->
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script
             src="http://code.jquery.com/jquery-3.3.1.min.js"

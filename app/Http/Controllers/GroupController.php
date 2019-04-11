@@ -15,15 +15,16 @@ class GroupController extends Controller
 
     public function index(Request $request)
     {
-        $groups = Group::latest()->name($request->name)->paginate(10);
+        $groups = Group::name($request->name)->paginate(10);
         return view('group.index', compact('groups'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     public function show($id)
     {
-        $group = Group::find($id);
-        return view('group.detail', compact('group'));
+        $admin = Group::admin($id);
+        $groups = Group::with('client')->find($id);
+        return view('group.detail', compact('groups', 'admin'));
     }
 
     public function create()
@@ -45,5 +46,4 @@ class GroupController extends Controller
         return redirect()->route('client.index')
             ->with('success', 'New client created successfully');
     }
-
 }
