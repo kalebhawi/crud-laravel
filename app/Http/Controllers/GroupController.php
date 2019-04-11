@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Group;
 use App\Client;
+use DB;
 
 class GroupController extends Controller
 {
@@ -29,8 +30,9 @@ class GroupController extends Controller
 
     public function create()
     {
-        $clients = Client::orderBy('name')->get();
-        return view('group.create', compact('clients'));
+        $clients = Client::with('group')->orderBy('name')->get();
+        //dd($clients[0]->group->admin);
+        return view('group.create', compact('clients', 'admins'));
     }
 
     public function store(Request $request)
@@ -43,7 +45,9 @@ class GroupController extends Controller
         ]);
         Group::create($request->only('name', 'description', 'client_quantity', 'admin'));
 
-        return redirect()->route('client.index')
-            ->with('success', 'New client created successfully');
+
+
+        return redirect()->route('group.index')
+            ->with('success', 'New group created successfully');
     }
 }

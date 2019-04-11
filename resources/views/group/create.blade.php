@@ -28,24 +28,29 @@
                            required minlength="3" maxlength="32">
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <strong>Description</strong>
-                    <input type="text" id="description" name="cpf" class="form-control" placeholder="Ex.: Group for admins"
-                           required minlength="11" maxlength="14">
+                    <input type="text" id="description" name="description" class="form-control" placeholder="Ex.: Group for admins" required>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <strong>Client quantity</strong>
-                    <input type="number" name="client_quantity" class="form-control" placeholder="Ex.: 1" required>
+                    <input type="number" name="client_quantity" class="form-control" placeholder="Ex.: 10" required>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <strong>Admin</strong>
-                    {{--TODO-select_mode--}}
-                    <select class="form-control form-control-md" name="admin" id="admin">
-                        @foreach($clients as $client)
+
+                    <select class="form-control form-control-md" name="admin" id="admin" required>
+
+                        <option value="">Select an administrator</option>
+
+                    @foreach($clients as $client)
+                        @if( $client->id  != $client->group->admin)
                             <option value="{{$client->id}}">{{$client->name}}</option>
-                        @endforeach
+                        @endif
+                    @endforeach
+
                     </select>
                 </div>
 
