@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
-                    <strong>Date of birth : </strong> {{$client->birthDate}}
+                    <strong>Birth date : </strong> {{$client->birthDate}}
                 </div>
             </div>
             <div class="col-md-12">

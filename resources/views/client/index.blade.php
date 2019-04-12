@@ -47,7 +47,7 @@
             <tr>
                 <th width="50px"><b>No.</b></th>
                 <th width="300px"><b>Name</b></th>
-                <th>Date of birth</th>
+                <th>Birth date</th>
                 <th>Group</th>
                 <th width="180px"><b>Action</b></th>
             </tr>
