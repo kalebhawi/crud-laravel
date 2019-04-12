@@ -19,3 +19,7 @@ Auth::routes();
 route::resource('client', 'ClientController');
 
 route::resource('group', 'GroupController');
+
+Route::post('unlinkUser', function ($id){
+    $unlinkUser = \App\Http\Controllers\GroupController::unlinkUser($id);
+});

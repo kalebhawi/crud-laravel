@@ -35,8 +35,9 @@ class ClientController extends Controller
      */
     public function create()
     {
-        $groups = Group::orderBy('name')->get();
-        return view('client.create', compact('groups'));
+        $clientInGroups = Client::quantity()->get();
+        $groups = Group::with('client')->orderBy('name')->get();
+        return view('client.create', compact('groups', 'clientInGroup'));
     }
 
     /**
@@ -165,5 +166,11 @@ class ClientController extends Controller
         Client::destroy($id);
         return redirect()->route('client.index')
             ->with('success', 'Client deleted successfully');
+    }
+
+    public function unlink(Request $request, $id)
+    {
+        $client = Client::with('phones')->find($id);
+        $client->group_id = $request->get('group_id');
     }
 }

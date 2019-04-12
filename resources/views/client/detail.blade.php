@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-12">
                 <hr>
-                <strong>Group:</strong> {{$client->group['name']}} - <a href="{{route('group.show', $client->group['id'])}}">More info</a>
+                <strong>Group:</strong> @if(!empty($client->group)) {{$client->group['name']}} - <a href="{{route('group.show', $client->group['id'])}}">More info</a> @endif
             </div>
 
             <div class="col-md-12">

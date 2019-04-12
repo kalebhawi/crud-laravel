@@ -50,7 +50,9 @@
                         <strong>Group</strong>
                         <select class="form-control form-control-md" name="group_id" id="group_id">
                             @foreach($groups as $group)
-                                <option value="{{$group->id}}">{{$group->name}}</option>
+                                @if($group->client_quantity >= ($group->clientsInGroup)) {{--TODO: mostrar somente grupos com quantity < maximo--}}
+                                    <option value="{{$group->id}}">{{$group->name}}</option>
+                                @endif
                             @endforeach
                         </select>
                 </div>

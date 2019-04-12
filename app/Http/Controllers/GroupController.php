@@ -16,7 +16,7 @@ class GroupController extends Controller
 
     public function index(Request $request)
     {
-        $groups = Group::name($request->name)->paginate(10);
+        $groups = Group::with('client')->name($request->name)->paginate(10);
         return view('group.index', compact('groups'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
@@ -89,5 +89,13 @@ class GroupController extends Controller
         Group::destroy($id);
         return redirect()->route('group.index')
             ->with('success', 'Group deleted successfully');
+    }
+
+
+    public static function unlinkUser($id)
+    {
+        $client = Client::find($id);
+        $client->group_id = 0;
+        $client->save();
     }
 }

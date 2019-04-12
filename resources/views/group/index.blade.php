@@ -55,8 +55,8 @@
                     <tr>
                         <td>{{$group->name}}</td>
                         <td>{{$group->description}}</td>
-                        <td>{{$group->client_quantity}}</td>
-                        <td>{{$group->admin}}</td>
+                        <td>{{$group->client_quantity}} (max)</td>
+                        <td>@if(isset($group->client[0]['name'])){{$group->client[0]['name']}} @endif</td>
                         <td>
                             <form action="{{route('group.destroy', $group->id)}}" method="post">
                                 <a class="btn btn-sm btn-light" href="{{route('group.show', $group->id)}}"><i
@@ -76,6 +76,4 @@
             <a class="btn btn-sm btn-success" href="{{route('client.index')}}">Show clients</a>
         </div>
     </div>
-
-
 @endsection
