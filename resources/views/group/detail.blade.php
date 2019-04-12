@@ -43,13 +43,12 @@
            <div class="panel-body col-lg-6">
                <ul class="list-group">
                    @foreach($groups->client as $client)
-                      <li class="list-group-item">
-                          {{$client->name}}
-                          @if($client->name == $admin->name)
-                              (Admin)
-                          @endif
-                      </li>
-
+                       <a href="{{route('client.show', $client->id)}}" class="list-group-item list-group-item-action">
+                           {{$client->name}}
+                           @if($client->name == $admin->name)
+                               (Admin)
+                           @endif
+                       </a>
                    @endforeach
                </ul>
            </div>
