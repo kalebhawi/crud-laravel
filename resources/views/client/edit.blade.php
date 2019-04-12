@@ -42,9 +42,26 @@
                     <strong>Address</strong>
                     <input type="text" name="address" class="form-control" placeholder="Address"
                            value="{{$client->address}}">
+                    <hr>
                 </div>
 
+                <div class="row col-md-12">
+                    <div class="col-md-6">
+                        <strong>Group</strong>
+                        <select class="form-control form-control-md" name="group_id" id="group_id">
+                            <option value="{{$client->group['id']}}">{{$client->group['name']}}</option>
+                            @foreach($groups as $group)
+                                @if($group->id != $client->group['id'])
+                                    <option value="{{$group->id}}">{{$group->name}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+
                 <div class="col-md-12">
+                    <hr>
                     <strong>Phones</strong><br>
                     <div class="row">
                         <div class="col-md-2">
@@ -98,6 +115,7 @@
                         <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                     </div>
                 </div>
+            </div>
         </form>
 
     </div>

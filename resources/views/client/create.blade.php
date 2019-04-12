@@ -43,9 +43,20 @@
                     <strong>Address</strong>
                     <input type="text" name="address" class="form-control" placeholder="Ex.: Rua Bento Gonçalves, 0000"
                            required>
+                    <hr>
+                </div>
+
+                <div class="col-md-6">
+                        <strong>Group</strong>
+                        <select class="form-control form-control-md" name="group_id" id="group_id">
+                            @foreach($groups as $group)
+                                <option value="{{$group->id}}">{{$group->name}}</option>
+                            @endforeach
+                        </select>
                 </div>
 
                 <div class="col-md-12">
+                    <hr>
                     <strong>Phones</strong>
                     <div class="row" id="phone-form">
                         <div class="col-md-2">
@@ -72,15 +83,6 @@
                         </div>
                         <br>
                     </div>
-                </div>
-
-                <div class="col-md-4">
-                    <strong>Group</strong>
-                    <select class="form-control form-control-md" name="group_id" id="group_id">
-                        @foreach($groups as $group)
-                            <option value="{{$group->id}}">{{$group->name}}</option>
-                        @endforeach
-                    </select>
                 </div>
 
                 <div class="col-md-12" align="center">

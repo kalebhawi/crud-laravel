@@ -43,14 +43,14 @@
 
                     <select class="form-control form-control-md" name="admin" id="admin" required>
 
-                        <option value="">Select an administrator</option>
+                        <option selected value="">Select an administrator</option>
 
                     @foreach($clients as $client)
                         @if( $client->id  != $client->group->admin)
                             <option value="{{$client->id}}">{{$client->name}}</option>
                         @endif
                     @endforeach
-
+                        <option value="" disabled>If haven't users, register one</option>
                     </select>
                 </div>
 

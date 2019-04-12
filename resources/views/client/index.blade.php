@@ -65,7 +65,7 @@
                     <td><b>{{++$i}}</b></td>
                     <td>{{$client->name}}</td>
                     <td>{{$client->birthDate}}</td>
-                    <td>{{$client->group->name}}</td>
+                    <td>{{$client->group['name']}}</td>
                     <td>
                         <form action="{{route('client.destroy', $client->id)}}" method="post">
                             <a class="btn btn-sm btn-light" href="{{route('client.show', $client->id)}}"><i class="far fa-eye"></i></a>

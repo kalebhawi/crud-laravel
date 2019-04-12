@@ -58,7 +58,7 @@
                         <td>{{$group->client_quantity}}</td>
                         <td>{{$group->admin}}</td>
                         <td>
-                            <form action="{{route('client.destroy', $group->id)}}" method="post">
+                            <form action="{{route('group.destroy', $group->id)}}" method="post">
                                 <a class="btn btn-sm btn-light" href="{{route('group.show', $group->id)}}"><i
                                             class="far fa-eye"></i></a>
                                 <a class="btn btn-sm btn-light" href="{{route('group.edit', $group->id)}}"><i

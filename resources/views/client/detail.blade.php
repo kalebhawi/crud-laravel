@@ -29,9 +29,15 @@
                 <div class="form-group">
                     <strong>Address : </strong> {{$client->address}}
                 </div>
+            </div>
+            <div class="col-md-12">
+                <hr>
+                <strong>Group:</strong> {{$client->group['name']}} - <a href="{{route('group.show', $client->group['id'])}}">More info</a>
+            </div>
 
-                <div class="col-md-12">
-                    <div class="form-group">
+            <div class="col-md-12">
+                <hr>
+                <div class="form-group">
                         <strong>Phones : </strong><br>
                         @foreach($client->phones as $phone)
                             <i class="fas fa-circle" style="color: green"></i>

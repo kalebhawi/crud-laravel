@@ -32,7 +32,7 @@ class GroupController extends Controller
     {
         $clients = Client::with('group')->orderBy('name')->get();
         //dd($clients[0]->group->admin);
-        return view('group.create', compact('clients', 'admins'));
+        return view('group.create', compact('clients'));
     }
 
     public function store(Request $request)
@@ -45,9 +45,49 @@ class GroupController extends Controller
         ]);
         Group::create($request->only('name', 'description', 'client_quantity', 'admin'));
 
+        $idGroup = Group::select('id')
+            ->where('name', $request->name)
+            ->first();
 
+        DB::table('clients')
+            ->where('id', $request->admin)
+            ->update(array('group_id' => $idGroup['id']));
 
         return redirect()->route('group.index')
             ->with('success', 'New group created successfully');
+    }
+
+    public function edit($id)
+    {
+        $admin = Group::admin($id);
+        $clients = Client::with('group')->orderBy('name')->get();
+        $group = Group::with('client')->find($id);
+        return view('group.edit', compact('group', 'admin', 'clients'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'client_quantity' => 'required',
+            'admin' => 'required',
+        ]);
+        $group = Group::with('client')->find($id);
+        $group->name = $request->get('name');
+        $group->description = $request->get('description');
+        $group->client_quantity = $request->get('client_quantity');
+        $group->admin = $request->get('admin');
+        $group->save();
+
+        return redirect()->route('group.index')
+            ->with('success', 'Client updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        Group::destroy($id);
+        return redirect()->route('group.index')
+            ->with('success', 'Group deleted successfully');
     }
 }

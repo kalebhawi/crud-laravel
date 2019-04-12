@@ -85,7 +85,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        $client = Client::with('phones')->find($id);
+        $client = Client::with('phones', 'group')->find($id);
         return view('client.detail', compact('client'));
     }
 
@@ -97,8 +97,9 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $client = Client::with('phones')->find($id);
-        return view('client.edit', compact('client'));
+        $groups = Group::orderBy('name')->get();
+        $client = Client::with('phones', 'group')->find($id);
+        return view('client.edit', compact('client', 'groups'));
     }
 
     /**
@@ -110,7 +111,6 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //funcionando!!!
         $request->validate([
             'name' => 'required',
             'cpf' => 'required',
@@ -158,5 +158,12 @@ class ClientController extends Controller
         $client->save();
         return redirect()->route('client.index')
             ->with('success', 'Client updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        Client::destroy($id);
+        return redirect()->route('client.index')
+            ->with('success', 'Client deleted successfully');
     }
 }
